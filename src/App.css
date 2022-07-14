@@ -1,0 +1,32 @@
+.App {
+  text-align: center;
+}
+
+.App h2 {
+  font-size: 14px;
+}
+
+.field{
+  width: 300px; 
+}
+
+.fieldsContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.outputCurrencyContainer{
+  display: flex;
+  align-items: center;
+  justify-content: start;
+}
+
+.outputValue{
+  margin: 0;
+  padding: 0;
+}
+
+h3{
+  margin: 0;
+}
