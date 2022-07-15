@@ -2,7 +2,7 @@ import axios from "axios";
 
 const baseUrl = "https://api.exchangerate.host";
 
-const convertCurrency = async (amount, from, to) => {
+const convertCurrency = async (amount = 0, from, to) => {
   try {
     const response = await axios.get(
       `${baseUrl}/convert?from=${from}&to=${to}&amount=${amount}'`

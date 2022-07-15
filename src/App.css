@@ -1,32 +1,63 @@
+:root{
+--black-color: #000;
+--grey-color: #808080
+--white-color: #ececec;
+}
+
 .App {
   text-align: center;
+  font-family: "Roboto", sans-serif;
 }
 
 .App h2 {
   font-size: 14px;
-}
-
-.field{
-  width: 300px; 
+  color: var(--grey-color);
 }
 
 .fieldsContainer {
+  margin: auto;
+  margin-top: 50px;
+  max-width: 600px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.outputCurrencyContainer{
+.outputCurrencyContainer {
   display: flex;
   align-items: center;
   justify-content: start;
 }
 
-.outputValue{
+.outputValue {
   margin: 0;
   padding: 0;
 }
 
-h3{
+h3 {
   margin: 0;
+}
+
+.inputCurrency__header {
+  font-size: 12px;
+  text-align: left;
+  color: var(--grey-color);
+  margin-bottom: 5px;
+}
+
+.inputCurrency__form{
+height: 40px;
+}
+
+.inputCurrency__input{
+  padding: 10px;
+  outline: none;
+  border: 1px solid ;
+  border-color: var(--grey-color);
+  border-bottom-left-radius: 5px;
+  border-top-left-radius: 5px;
+}
+
+.inputCurrency__select{
+  height: 100%;
 }

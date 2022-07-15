@@ -1,5 +1,4 @@
 import "./App.css";
-import "normalize.css";
 import * as currencyApi from "./services/services";
 
 import React, { useState, useEffect } from "react";
@@ -10,6 +9,8 @@ function App() {
 
   const [inputCurrencyValue, setInputCurrencyValue] = useState("");
   const [outputCurrencyValue, setOutputCurrencyValue] = useState(0);
+
+  const [actualDate, setActualDate] = useState("");
 
   const handleInputCodeChange = (event) => {
     setInputCurrencyCode(event.target.value);
@@ -23,6 +24,11 @@ function App() {
     setInputCurrencyValue(event.target.value);
   };
 
+  const handleReverseChange = (event) => {
+    setInputCurrencyCode(outputCurrencyCode);
+    setOutputCurrencyCode(inputCurrencyCode);
+  };
+
   useEffect(() => {
     currencyApi
       .convertCurrency(
@@ -31,11 +37,22 @@ function App() {
         outputCurrencyCode
       )
       .then((response) => {
-        setOutputCurrencyValue(response.data.result);
+        const { data } = response;
+        const exchangeResult = data.result;
+        const exchangeActualDate = data.date;
+
+        console.log(response);
+        if (exchangeResult) {
+          setOutputCurrencyValue(exchangeResult.toFixed(2));
+          //we gonna change date format from 'yyyy-mm-dd' to 'dd.mm.yyyy'
+        } else {
+          setOutputCurrencyValue(0);
+        }
+        setActualDate(exchangeActualDate.split("-").reverse().join("."));
       });
   }, [inputCurrencyCode, inputCurrencyValue, outputCurrencyCode]);
 
-  const test = (event) => {
+  const preventEvent = (event) => {
     event.preventDefault();
   };
 
@@ -49,22 +66,26 @@ function App() {
 
       {/* input field */}
       <div className="fieldsContainer">
-        <div className="field">
-          <h3>Ви віддаєте</h3>
-          <form onSubmit={test}>
-            <label>
+        <div className="inputCurrency">
+          <h3 className="inputCurrency__header">Ви віддаєте</h3>
+          <form onSubmit={preventEvent} className="inputCurrency__form">
+            <label htmlFor="inputValue">
               <input
                 onChange={handleInputValueChange}
                 type="number"
+                id="inputValue"
                 name="inputValue"
                 placeholder="0"
                 value={inputCurrencyValue}
+                className="inputCurrency__input"
               />
             </label>
-            <label>
+            <label htmlFor="inputCurrencyCode">
               <select
+                id="inputCurrencyCode"
                 value={inputCurrencyCode}
                 onChange={handleInputCodeChange}
+                className="inputCurrency__select"
               >
                 <option value="USD">USD</option>
                 <option value="EUR">EUR</option>
@@ -75,13 +96,20 @@ function App() {
             </label>
           </form>
         </div>
+        <button type="button" onClick={handleReverseChange}>
+          change
+        </button>
 
         {/* output field */}
 
         <div className="field">
-            <h3>Ви отримуюте</h3>
+          <h3>Ви отримуюте</h3>
           <div className="outputCurrencyContainer">
-            {outputCurrencyValue ? <p className="outputValue">{outputCurrencyValue}</p> : <p className="outputValue">0</p>}
+            {inputCurrencyValue ? (
+              <p className="outputValue">{outputCurrencyValue}</p>
+            ) : (
+              <p className="outputValue">0</p>
+            )}
             <form>
               <select
                 value={outputCurrencyCode}
@@ -97,6 +125,15 @@ function App() {
             </form>
           </div>
         </div>
+      </div>
+      <div className="">
+        <p>Курс обміну актуальний на {actualDate} </p>
+        {inputCurrencyValue && (
+          <p>
+            1 {inputCurrencyCode}={outputCurrencyValue / inputCurrencyValue}
+            {outputCurrencyCode}
+          </p>
+        )}
       </div>
     </div>
   );
