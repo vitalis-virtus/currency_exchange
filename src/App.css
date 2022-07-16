@@ -141,6 +141,10 @@
   padding: 9px;
   height: 100%;
 }
+.output-currency__select option{
+  color:var(--black-color);
+}
+
 
 .change-button {
   cursor: pointer;
