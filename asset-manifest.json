@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/currency_exchange/static/css/main.07a2b7ec.css",
+    "main.js": "/currency_exchange/static/js/main.10b5c650.js",
+    "index.html": "/currency_exchange/index.html",
+    "main.07a2b7ec.css.map": "/currency_exchange/static/css/main.07a2b7ec.css.map",
+    "main.10b5c650.js.map": "/currency_exchange/static/js/main.10b5c650.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.07a2b7ec.css",
+    "static/js/main.10b5c650.js"
+  ]
+}
