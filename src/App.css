@@ -49,7 +49,9 @@
 
 .fieldsContainer {
   margin-top: 20px;
+  width: 100%;
   display: flex;
+  align-items: center;
   justify-content: space-between;
 }
 
@@ -69,6 +71,20 @@
   align-items: center;
   justify-content: start;
   height: 40px;
+  padding: 10px;
+  border: 1px solid var(--grey-color);
+  border-radius: 5px;
+  position: relative;
+}
+
+.input-currency__form::after {
+  content: "";
+  display: block;
+  width: 1px;
+  height: 100%;
+  background-color: var(--grey-color);
+  position: absolute;
+  right: 80px;
 }
 
 .input-currency__input__label {
@@ -78,22 +94,21 @@
 .input-currency__input {
   outline: none;
   height: 100%;
-  padding: 10px;
   border-bottom-left-radius: 5px;
   border-top-left-radius: 5px;
   border: 1px solid var(--grey-color);
   border-right: none;
   width: 100%;
+  border: none;
 }
 
 .input-currency__select {
   display: block;
-  border-color: var(--grey-color);
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
-  padding: 9px;
-  height: 100%;
+  border: none;
   outline: none;
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
 }
 
 .output-currency {
@@ -109,21 +124,28 @@
 
 .output-currency__output {
   height: 40px;
+  /* width: 270px; */
   display: flex;
   align-items: center;
-  justify-content: start;
+  justify-content: space-between;
+  border: 1px solid var(--grey-color);
+  padding: 10px;
+  border-radius: 5px;
+  position: relative;
+}
+
+.output-currency__output::after {
+  content: "";
+  display: block;
+  width: 1px;
+  height: 100%;
+  background-color: var(--grey-color);
+  position: absolute;
+  right: 80px;
 }
 
 .output-currency__value {
   color: var(--app-bgc);
-  border-bottom-left-radius: 5px;
-  padding: 10px;
-  border-top-left-radius: 5px;
-  border: 1px solid var(--white-color);
-  outline: none;
-  margin: 0;
-  width: 100%;
-  text-align: left;
 }
 
 .output-currency__form {
@@ -133,18 +155,17 @@
 .output-currency__select {
   color: var(--app-bgc);
   background-color: transparent;
-  border-color: var(--white-color);
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
+  cursor: pointer;
+  border: none;
   outline: none;
-  border-left: none;
-  padding: 9px;
-  height: 100%;
+  width: 60px;
+  height: 60px;
+  top: -10px;
+  position: relative;
 }
-.output-currency__select option{
-  color:var(--black-color);
+.output-currency__select option {
+  color: var(--black-color);
 }
-
 
 .change-button {
   cursor: pointer;
