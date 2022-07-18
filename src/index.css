@@ -36,3 +36,13 @@ p {
   margin: 0;
   padding: 0;
 }
+
+:root {
+  --black-color: #030303;
+  --grey-color: #9b9899;
+  --white-color: #ffffffbd;
+  --app-bgc: #f8f8fa;
+  --primary-block-bgc: #fff;
+  --secondary-block-bgc: #00829a;
+  --button-bgc: #00a9c7;
+}

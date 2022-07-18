@@ -1,0 +1,12 @@
+.headers__wrapper {
+  margin-top: 20px;
+  margin-bottom: 50px;
+}
+
+.header__main {
+  margin-bottom: 10px;
+}
+
+.header__description {
+  color: var(--grey-color);
+}

@@ -1,0 +1,54 @@
+.output-currency {
+  width: 300px;
+}
+
+.output-currency__header {
+  font-size: 12px;
+  text-align: left;
+  color: var(--white-color);
+  margin-bottom: 5px;
+}
+
+.output-currency__output {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid var(--grey-color);
+  padding: 10px;
+  border-radius: 5px;
+  position: relative;
+}
+
+.output-currency__output::after {
+  content: "";
+  display: block;
+  width: 1px;
+  height: 100%;
+  background-color: var(--grey-color);
+  position: absolute;
+  right: 80px;
+}
+
+.output-currency__value {
+  color: var(--app-bgc);
+}
+
+.output-currency__form {
+  height: 100%;
+}
+
+.output-currency__select {
+  color: var(--app-bgc);
+  background-color: transparent;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  width: 60px;
+  height: 60px;
+  top: -10px;
+  position: relative;
+}
+.output-currency__select option {
+  color: var(--black-color);
+}

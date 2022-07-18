@@ -3,7 +3,11 @@ import * as currencyApi from "./services/services";
 
 import React, { useState, useEffect } from "react";
 
-import { GlobalSvgSelector } from "./assets/icons/global/GlobalSvgSelector";
+//components
+import Header from "./components/Header/Header";
+import SwapButton from "./components/SwapButton/SwapButton";
+import OutputCurrencyBlock from "./components/OutputCurrencyBlock/OutputCurrencyBlock";
+import AdditionalInfo from "./components/AdditionalInfo/AdditionalInfo";
 
 function App() {
   const [inputCurrencyCode, setInputCurrencyCode] = useState("USD");
@@ -28,7 +32,7 @@ function App() {
     setInputCurrencyValue(event.target.value);
   };
 
-  const handleReverseChange = (event) => {
+  const handleSwapChange = (event) => {
     setInputCurrencyCode(outputCurrencyCode);
     setOutputCurrencyCode(inputCurrencyCode);
   };
@@ -63,14 +67,7 @@ function App() {
 
   return (
     <div className="App">
-      <div className="headers__wrapper">
-        <h1>Калькулятор обміну(конвертації валют)</h1>
-        <h2>
-          Тут ви можете перегулянути актуальний курс для обміну однієї іноземної
-          валюти на іншу
-        </h2>
-      </div>
-
+      <Header />
       {/* input field */}
       <div className="content__wrapper">
         <div className="fieldsContainer">
@@ -109,55 +106,29 @@ function App() {
               </label>
             </form>
           </div>
-          <button
-            type="button"
-            onClick={handleReverseChange}
-            className="change-button"
-          >
-            <GlobalSvgSelector id="arrows" />
-          </button>
 
-          {/* output field */}
+          {/* Button can swap input and output currency codes */}
 
-          <div className="output-currency">
-            <h3 className="output-currency__header">Ви отримуєте</h3>
-            <div className="output-currency__output">
-              {inputCurrencyValue ? (
-                <p className="output-currency__value">{outputCurrencyValue}</p>
-              ) : (
-                <p className="output-currency__value">0</p>
-              )}
-              <form className="output-currency__form">
-                <label htmlFor="outputCurrencyCode">
-                  <select
-                    value={outputCurrencyCode}
-                    className="output-currency__select"
-                    id="outputCurrencyCode"
-                    onChange={handleOutputCodeChange}
-                  >
-                    <option value="USD">USD</option>
-                    <option value="EUR">EUR</option>
-                    <option value="NOK">NOK</option>
-                    <option value="SEK">SEK</option>
-                    <option value="DKK">DKK</option>
-                    <option value="UAH">UAH</option>
-                    <option value="PLN">PLN</option>
-                  </select>
-                </label>
-              </form>
-            </div>
-          </div>
+          <SwapButton handleSwap={handleSwapChange} />
+
+          {/* output field with actual out currency value with ability to change output currency code*/}
+
+          <OutputCurrencyBlock
+            inputCurrencyValue={inputCurrencyValue}
+            outputCurrencyValue={outputCurrencyValue}
+            outputCurrencyCode={outputCurrencyCode}
+            handleOutputCodeChange={handleOutputCodeChange}
+          />
         </div>
-        <div className="additional-info">
-          <p className="additional-info__date">
-            Курс обміну актуальний на {actualDate}{" "}
-          </p>
-          {inputCurrencyValue && (
-            <p className="additional-info__exchange-value">
-              1 {inputCurrencyCode} = {rate} {outputCurrencyCode}
-            </p>
-          )}
-        </div>
+
+        {/* block with additional info for actual date and actual currecny rate for selected currency codes */}
+        <AdditionalInfo
+          actualDate={actualDate}
+          inputCurrencyValue={inputCurrencyValue}
+          inputCurrencyCode={inputCurrencyCode}
+          rate={rate}
+          outputCurrencyCode={outputCurrencyCode}
+        />
       </div>
     </div>
   );

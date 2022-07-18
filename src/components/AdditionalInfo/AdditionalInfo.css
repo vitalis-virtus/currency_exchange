@@ -1,0 +1,14 @@
+.additional-info {
+  text-align: left;
+  font-size: 14px;
+  margin-top: 15px;
+}
+
+.additional-info__date {
+  color: var(--grey-color);
+  margin-bottom: 5px;
+}
+
+.additional-info__exchange-value {
+  color: var(--black-color);
+}
