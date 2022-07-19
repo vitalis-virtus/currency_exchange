@@ -21,8 +21,20 @@
   transition: 250ms ease-in-out;
 }
 
+@media screen and (max-width: 768px) {
+  .swap-button svg {
+    transform: rotate(0);
+  }
+}
+
 .swap-button:hover svg {
   fill: var(--secondary-block-bgc);
   transform: rotate(270deg);
   transition: 250ms ease-in-out;
+}
+
+@media screen and (max-width: 768px) {
+  .swap-button:hover svg {
+    transform: rotate(180deg);
+  }
 }
