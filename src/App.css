@@ -30,12 +30,12 @@
 @media screen and (max-width: 767px) {
   .content__wrapper {
     width: 300px;
-    height: auto;
+    height: 270px;
     background: linear-gradient(
       180deg,
       var(--primary-block-bgc) 0%,
-      var(--primary-block-bgc) 50%,
-      var(--secondary-block-bgc) 50%,
+      var(--primary-block-bgc) 43%,
+      var(--secondary-block-bgc) 43%,
       var(--secondary-block-bgc) 100%
     );
   }
@@ -52,6 +52,7 @@
 @media screen and (max-width: 767px) {
   .fieldsContainer {
     display: flex;
+    margin: 0;
     flex-direction: column;
   }
 }

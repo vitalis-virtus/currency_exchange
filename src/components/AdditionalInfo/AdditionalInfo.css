@@ -9,6 +9,18 @@
   margin-bottom: 5px;
 }
 
+@media screen and (max-width: 767px) {
+  .additional-info__date {
+    color: var(--white-color);
+  }
+}
+
 .additional-info__exchange-value {
-  color: var(--black-color);
+  color: var(--grey-color);
+}
+
+@media screen and (max-width: 767px) {
+  .additional-info__exchange-value {
+    color: var(--white-color);
+  }
 }
