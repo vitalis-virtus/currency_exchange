@@ -1,12 +1,19 @@
 import React from "react";
 import "./OutputCurrencyBlock.css";
 
+interface IProps {
+  inputCurrencyValue: string;
+  outputCurrencyValue: number;
+  outputCurrencyCode: string;
+  handleOutputCodeChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
+}
+
 export default function OutputCurrencyBlock({
   inputCurrencyValue,
   outputCurrencyValue,
   outputCurrencyCode,
   handleOutputCodeChange,
-}) {
+}: IProps) {
   return (
     <div className="output-currency">
       <h3 className="output-currency__header">Ви отримуєте</h3>

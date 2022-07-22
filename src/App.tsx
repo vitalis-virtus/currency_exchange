@@ -18,21 +18,27 @@ function App() {
 
   // additional info
   const [actualDate, setActualDate] = useState("");
-  const [rate, setRate] = useState("");
+  const [rate, setRate] = useState(0);
 
-  const handleInputCodeChange = (event) => {
-    setInputCurrencyCode(event.target.value);
-  };
-
-  const handleOutputCodeChange = (event) => {
-    setOutputCurrencyCode(event.target.value);
-  };
-
-  const handleInputValueChange = (event) => {
+  const handleInputValueChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
     setInputCurrencyValue(event.target.value);
   };
 
-  const handleSwapChange = (event) => {
+  const handleInputCodeChange = (
+    event: React.ChangeEvent<HTMLSelectElement>
+  ) => {
+    setInputCurrencyCode(event.target.value);
+  };
+
+  const handleOutputCodeChange = (
+    event: React.ChangeEvent<HTMLSelectElement>
+  ) => {
+    setOutputCurrencyCode(event.target.value);
+  };
+
+  const handleSwapChange = () => {
     setInputCurrencyCode(outputCurrencyCode);
     setOutputCurrencyCode(inputCurrencyCode);
   };
@@ -40,7 +46,7 @@ function App() {
   useEffect(() => {
     currencyApi
       .convertCurrency(
-        inputCurrencyValue,
+        Number(inputCurrencyValue),
         inputCurrencyCode,
         outputCurrencyCode
       )
@@ -61,7 +67,7 @@ function App() {
       });
   }, [inputCurrencyCode, inputCurrencyValue, outputCurrencyCode]);
 
-  const preventEvent = (event) => {
+  const preventEvent = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
   };
 

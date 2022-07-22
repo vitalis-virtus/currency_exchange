@@ -2,11 +2,14 @@ import React, { useState } from "react";
 import "./SwapButton.css";
 import { GlobalSvgSelector } from "../../assets/icons/global/GlobalSvgSelector";
 
-export default function SwapButton({ handleSwap }) {
+interface Props {
+  handleSwap: () => void;
+}
+
+export default function SwapButton({ handleSwap }: Props) {
   const [swapped, setSwapped] = useState(false);
 
   const handleSwapChange = () => {
-    console.log(swapped);
     handleSwap();
     setSwapped((prevState) => !prevState);
   };
